@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}        
-    if: ${{ github.event.inputs.env == 'dev' || github.event.inputs.env == 'test' || github.event.inputs.env == 'qa' || github.event.inputs.env == 'prod' }}
+    if: ${{ github.event.inputs.env == 'Development' || github.event.inputs.env == 'Testing' || github.event.inputs.env == 'QA' || github.event.inputs.env == 'Production' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.env == 'test' || github.event.inputs.env == 'qa' }}
+    if: ${{ github.event.inputs.env == 'Testing' || github.event.inputs.env == 'QA' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
   perf-test:
     name: Performance Test
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.env == 'qa' }}
+    if: ${{ github.event.inputs.env == 'QA' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -49,7 +49,7 @@ jobs:
   api-test:
     name: API Test
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.env == 'qa' }}
+    if: ${{ github.event.inputs.env == 'QA' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest   
     env:
       DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}     
-    if: ${{ github.event.inputs.env == 'prod' }}
+    if: ${{ github.event.inputs.env == 'Development' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
