@@ -21,8 +21,6 @@ jobs:
       - name: Deploy
         run: |
           echo "Executing Deploy..."
-          echo "Deployed with secret: $DEPLOY_SECRET"
-          echo "REGION_ID: ${{ env.REGION_ID }}"
 
   test:
     name: Test
@@ -60,8 +58,6 @@ jobs:
   post-checks:
     name: Post-Checks
     runs-on: ubuntu-latest   
-    env:
-      DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}     
     if: ${{ github.event.inputs.env == 'Development' }}
     steps:
       - name: Checkout repository
@@ -69,4 +65,3 @@ jobs:
       - name: Run post-checks
         run: |
           echo "Executing post-checks..."
-          echo "Deployed with secret: $DEPLOY_SECRET"
