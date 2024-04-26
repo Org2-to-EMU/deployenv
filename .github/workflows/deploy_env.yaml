@@ -58,7 +58,7 @@ jobs:
   post-checks:
     name: Post-Checks
     runs-on: ubuntu-latest   
-    if: ${{ github.event.inputs.env == 'Development' }}
+    if: ${{ github.event.inputs.env == 'Production' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
